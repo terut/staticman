@@ -1,0 +1,3 @@
+namespace :staticman do
+
+end
