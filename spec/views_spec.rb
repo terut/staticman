@@ -29,7 +29,7 @@ describe 'Proxy' do
     it { raw.should include('<h1><a href="/">Hello World</a></h1>') }
 
     after do
-      @proxy.remove('errors')
+      @proxy.destroy('errors')
     end
   end
 end
