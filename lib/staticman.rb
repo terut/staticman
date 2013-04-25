@@ -1,6 +1,7 @@
 # Load Rails/Railtie
 begin
   require 'rails'
+  require 'action_controller/railtie'
 rescue LoadError
 
 end
@@ -17,6 +18,7 @@ EOC
 
 require "staticman/version"
 require 'staticman/configurable'
+require 'staticman/proxy'
 
 if defined?(Rails)
   require 'staticman/railtie'
