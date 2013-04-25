@@ -6,7 +6,7 @@ module Staticman
       include Singleton
 
       @@defaults = {
-        layout_dir: 'app/views/layouts',
+        static_pages: []
         static_dir: 'public' 
       }
       
@@ -16,10 +16,6 @@ module Staticman
 
       def initialize
         @@defaults.each_pair { |k,v| __send__("#{k}=", v) }
-      end
-     
-      def to_hash
-        @hash ||= @@defaults.keys.inject({}) { |h, k| h[k] = __send__("k") }
       end
 
       attr_accessor *(@@defaults.keys)

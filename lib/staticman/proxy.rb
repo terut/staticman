@@ -15,7 +15,17 @@ module Staticman
     end
 
     def build(*args, &block)
-      render(*args, &block)
+      raw = render_to_string(*args, &block)
+      option = args.first
+      open(file_path(option[:file]), "w") { |f| f.write raw }
+    end
+
+    def file_path(name)
+      Rails.root.join("public", "#{name}.html")
+    end
+
+    def remove(name)
+      File.delete file_path(name)
     end
   end
 end
