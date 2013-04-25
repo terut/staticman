@@ -6,7 +6,7 @@ module Staticman
       include Singleton
 
       @@defaults = {
-        static_pages: []
+        static_pages: [],
         static_dir: 'public' 
       }
       

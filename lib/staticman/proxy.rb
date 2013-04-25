@@ -17,15 +17,23 @@ module Staticman
     def build(*args, &block)
       raw = render_to_string(*args, &block)
       option = args.first
-      open(file_path(option[:file]), "w") { |f| f.write raw }
+      path = file_path(option[:file])
+      open(path, "w") { |f| f.write raw }
     end
 
-    def file_path(name)
-      Rails.root.join("public", "#{name}.html")
+    def file_path(path)
+      name = filename(path)
+      Rails.root.join(Staticman.config.static_dir, "#{name}.html")
     end
 
-    def remove(name)
-      File.delete file_path(name)
+    def destroy(file)
+      File.delete file_path(file)
+    end
+
+    private
+    def filename(path)
+      return path unless path.include?("/")
+      path.split("/").last
     end
   end
 end
