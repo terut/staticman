@@ -7,7 +7,8 @@ module Staticman
 
       @@defaults = {
         static_pages: [],
-        static_dir: 'public' 
+        static_dir: 'public',
+        host: 'exstamp.com'
       }
       
       def self.defaults

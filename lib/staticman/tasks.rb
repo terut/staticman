@@ -5,8 +5,11 @@ namespace :staticman do
 
     pages = Staticman.config.static_pages
 
+    request = Staticman::Request.new
+
     pages.each do |page|
       proxy = Staticman::Proxy.new
+      proxy.request = request
       proxy.build page
     end
   end

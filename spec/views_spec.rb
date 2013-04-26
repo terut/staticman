@@ -8,6 +8,7 @@ describe 'Proxy' do
   context 'Rendering static page' do
     before do
       @proxy = Proxy.new
+      @proxy.request = Request.new
     end
 
     subject { @proxy.render_to_string file: 'errors', layout: 'application' }
@@ -19,6 +20,7 @@ describe 'Proxy' do
   context 'Write static page' do
     before do
       @proxy = Proxy.new
+      @proxy.request = Request.new
       @proxy.build file: 'errors', layout: 'application'
     end
 
@@ -33,4 +35,3 @@ describe 'Proxy' do
     end
   end
 end
-

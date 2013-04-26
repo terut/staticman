@@ -1,17 +1,9 @@
 # coding: utf-8
 require 'pry'
 module Staticman
-  class Proxy < AbstractController::Base
-    MODULES = [
-      AbstractController::Rendering,
-      AbstractController::Layouts,
-      AbstractController::Helpers,
-      AbstractController::Translation,
-      AbstractController::AssetPaths,
-    ]
-
-    MODULES.each do |mod|
-      include mod
+  class Proxy < ActionController::Base
+    def controller_path
+      'application'
     end
 
     def build(*args, &block)
