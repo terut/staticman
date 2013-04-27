@@ -5,11 +5,8 @@ namespace :staticman do
 
     pages = Staticman.config.static_pages
 
-    request = Staticman::Request.new
-
     pages.each do |page|
-      proxy = Staticman::Proxy.new
-      proxy.request = request
+      proxy = Staticman::Performer.new
       proxy.build page
     end
   end
@@ -21,7 +18,7 @@ namespace :staticman do
     pages = Staticman.config.static_pages
 
     pages.each do |page|
-      proxy = Staticman::Proxy.new
+      proxy = Staticman::Performer.new
       proxy.destroy page[:file]
     end
   end

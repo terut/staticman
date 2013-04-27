@@ -1,11 +1,8 @@
 module Staticman
   class Railtie < Rails::Railtie
     initializer 'staticman' do |app|
-      ActiveSupport.on_load(:action_controller) do
-        Proxy.send :include, Rails.application.routes.url_helpers
-        Proxy.send :include, Rails.application.routes.mounted_helpers
-        ::ActionView::Base.send :include, Rails.application.helpers
-        ::ActionView::Base.send :include, ActionViewExtension
+      ActiveSupport.on_load(:staticman_performer) do |proxy|
+        proxy.view_context.class.send :include, ViewSilencer
       end
     end
 

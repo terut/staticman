@@ -1,16 +1,24 @@
-# coding: utf-8
-require 'pry'
 module Staticman
-  class Proxy < ActionController::Base
-    def controller_path
-      'application'
+  class Performer
+    include ProxyController
+    include ProxyRequest
+
+    def initialize
+      @proxy = controller_context
+      @proxy.request = request_context
+      
+      ActiveSupport.run_load_hooks(:staticman_performer, @proxy)
     end
 
     def build(*args, &block)
-      raw = render_to_string(*args, &block)
+      raw = render(*args, &block) 
       option = args.first
       path = file_path(option[:file])
       open(path, "w") { |f| f.write raw }
+    end
+
+    def render(*args, &block)
+      @proxy.render_to_string(*args, &block)
     end
 
     def file_path(path)

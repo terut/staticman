@@ -4,14 +4,13 @@ require 'pry'
 
 include Staticman
 
-describe 'Proxy' do
+describe 'Performer' do
   context 'Rendering static page' do
     before do
-      @proxy = Proxy.new
-      @proxy.request = Request.new
+      @proxy = Performer.new
     end
 
-    subject { @proxy.render_to_string file: 'errors', layout: 'application' }
+    subject { @proxy.render file: 'errors', layout: 'application' }
     it { should include('<p>404 Not Found</p>') }
     it { should include('<title>welecome</title>') }
     it { should include('<h1><a href="/">Hello World</a></h1>') }
@@ -19,8 +18,7 @@ describe 'Proxy' do
 
   context 'Write static page' do
     before do
-      @proxy = Proxy.new
-      @proxy.request = Request.new
+      @proxy = Performer.new
       @proxy.build file: 'errors', layout: 'application'
     end
 
