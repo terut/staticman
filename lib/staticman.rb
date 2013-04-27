@@ -18,9 +18,10 @@ EOC
 
 require "staticman/version"
 require 'staticman/configurable'
-require 'staticman/proxy'
+require 'staticman/view_silencer'
+require 'staticman/controller'
 require 'staticman/request'
-require 'staticman/core_ext/action_view_extension'
+require 'staticman/performer'
 
 if defined?(Rails)
   require 'staticman/railtie'
