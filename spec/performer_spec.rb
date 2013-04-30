@@ -39,7 +39,7 @@ describe 'Performer' do
     end
 
     let(:raw) { File.read(@proxy.file_path('errors')) }
-    it { File.exist?(@proxy.file_path('errors')).should be_true }
+    it { File.should exist(@proxy.file_path('errors')) }
     it { raw.should include('<title>application</title>') }
     it { raw.should include('<p><a href="http://example.com/">back</a></p>') }
     it_behaves_like 'render raw'
