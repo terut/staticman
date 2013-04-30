@@ -28,6 +28,7 @@ describe 'Performer' do
 
     let(:raw) { @proxy.render file: 'errors', layout: 'application' }
     it { raw.should include('<title>application</title>') }
+    it { raw.should include('<p><a href="http://example.com/">back</a></p>') }
     it_behaves_like 'render raw'
   end
 
@@ -40,6 +41,7 @@ describe 'Performer' do
     let(:raw) { File.read(@proxy.file_path('errors')) }
     it { File.exist?(@proxy.file_path('errors')).should be_true }
     it { raw.should include('<title>application</title>') }
+    it { raw.should include('<p><a href="http://example.com/">back</a></p>') }
     it_behaves_like 'render raw'
 
     after do
