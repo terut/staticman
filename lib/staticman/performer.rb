@@ -3,6 +3,8 @@ module Staticman
     include ProxyController
     include ProxyRequest
 
+    attr_reader :proxy
+
     def initialize
       @proxy = controller_context
       @proxy.request = request_context
