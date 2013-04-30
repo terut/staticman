@@ -1,0 +1,10 @@
+<% if signed_in? %>
+  <p>singied_in?</p>
+<% end %>
+<p><%= current_user.name %></p>
+<p>404 Not Found</p>
+<% if welcome? %>
+  <p><%= welcome %></p>
+<% end %>
+<p><%= copyright_helper %></p>
+<p><%= welcome_helper %></p>
