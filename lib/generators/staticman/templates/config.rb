@@ -10,5 +10,5 @@ Staticman.configure do |config|
   # ]
   # config.static_dir = 'public'
   # config.host = 'example.com'
-  # controller_context_class: nil
+  # config.controller_context_class = nil
 end
