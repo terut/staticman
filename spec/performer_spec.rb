@@ -32,6 +32,25 @@ describe 'Performer' do
     it_behaves_like 'render raw'
   end
 
+  context 'rendering with config changing' do
+    before do
+      Staticman.configure do |config|
+        config.host = 'example.net'
+      end
+
+      @proxy = Performer.new
+    end
+
+    let(:raw) { @proxy.render file: 'errors', layout: 'application' }
+    it { raw.should include('<p><a href="http://example.net/">back</a></p>') }
+
+    after do
+      Staticman.configure do |config|
+        config.host = 'example.com'
+      end
+    end
+  end
+
   context 'write static page' do
     before do
       @proxy = Performer.new

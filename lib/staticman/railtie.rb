@@ -7,7 +7,7 @@ module Staticman
     end
 
     rake_tasks do
-      require 'staticman/tasks'
+      load 'staticman/tasks.rake'
     end
   end
 end
