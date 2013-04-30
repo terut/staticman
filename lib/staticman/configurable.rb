@@ -8,7 +8,8 @@ module Staticman
       @@defaults = {
         static_pages: [],
         static_dir: 'public',
-        host: 'exstamp.com'
+        host: 'example.com',
+        controller_context_class: nil
       }
       
       def self.defaults
