@@ -1,0 +1,131 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Staticman by terut</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/respond.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!--[if lt IE 8]>
+    <link rel="stylesheet" href="stylesheets/ie.css">
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+  </head>
+  <body>
+      <div id="header">
+        <nav>
+          <li class="fork"><a href="https://github.com/terut/staticman">View On GitHub</a></li>
+          <li class="downloads"><a href="https://github.com/terut/staticman/zipball/master">ZIP</a></li>
+          <li class="downloads"><a href="https://github.com/terut/staticman/tarball/master">TAR</a></li>
+          <li class="title">DOWNLOADS</li>
+        </nav>
+      </div><!-- end header -->
+
+    <div class="wrapper">
+
+      <section>
+        <div id="title">
+          <h1>Staticman</h1>
+          <p>A builder for static pages with proxy rails controller and template engine.</p>
+          <hr>
+          <span class="credits left">Project maintained by <a href="https://github.com/terut">terut</a></span>
+          <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="http://twitter.com/#!/michigangraham">mattgraham</a></span>
+        </div>
+
+        <h1>Staticman</h1>
+
+<p>Staticman build static pages, e.g. errors, about, contact, and it's very easy, fast, programable.
+Rending with proxy inherited rails controller.</p>
+
+<h2>Installation</h2>
+
+<p>Add this line to your application's Gemfile:</p>
+
+<pre><code>gem 'staticman'
+</code></pre>
+
+<p>And then execute:</p>
+
+<pre><code>$ bundle
+</code></pre>
+
+<p>Or install it yourself as:</p>
+
+<pre><code>$ gem install staticman
+</code></pre>
+
+<h2>Setup</h2>
+
+<p>Create <code>staticman.rb</code> as config in <code>config</code> directory.</p>
+
+<pre><code>$ rails g staticman:build
+</code></pre>
+
+<p>Next, setting config with <code>staticman.rb</code>.</p>
+
+<div class="highlight"><pre><span class="no">Staticman</span><span class="o">.</span><span class="n">configure</span> <span class="k">do</span> <span class="o">|</span><span class="n">config</span><span class="o">|</span>
+  <span class="n">config</span><span class="o">.</span><span class="n">static_pages</span> <span class="o">=</span> <span class="o">[</span>
+    <span class="p">{</span> <span class="ss">file</span><span class="p">:</span> <span class="s1">'statics/about'</span><span class="p">,</span> <span class="ss">layout</span><span class="p">:</span> <span class="s1">'application'</span> <span class="p">},</span>
+    <span class="p">{</span> <span class="ss">file</span><span class="p">:</span> <span class="s1">'statics/404'</span><span class="p">,</span> <span class="ss">layout</span><span class="p">:</span> <span class="s1">'application'</span> <span class="p">}</span>
+  <span class="o">]</span>
+  <span class="c1"># config.static_dir = 'public'</span>
+  <span class="n">config</span><span class="o">.</span><span class="n">host</span> <span class="o">=</span> <span class="s1">'staticman.github.com'</span>
+  <span class="c1"># config.controller_context_class = nil</span>
+<span class="k">end</span>
+</pre></div>
+
+<p>The following is config parameters means.</p>
+
+<ul>
+<li>
+<code>static_pages</code> - rendering pages, default is <code>[]</code>.</li>
+<li>
+<code>static_dir</code> - output directory for html, default is <code>public</code>.</li>
+<li>
+<code>host</code> - resolve domain, default is <code>example.com</code>.</li>
+<li>
+<code>controller_context_class</code> - using controller as proxy, default is <code>ApplicationController</code>.</li>
+</ul><h2>Usage</h2>
+
+<p>So easy how to use, you only execute two commands of <code>build</code> and <code>destroy</code>.</p>
+
+<p>First, add static pages in directory specified.
+you can write static pages the same as other views, include <code>helper_method</code>, <code>*_helper</code>.</p>
+
+<pre><code>$ vim app/view/statics/about.html.erb[haml, etc...]
+</code></pre>
+
+<p>Create static pages.</p>
+
+<pre><code>$ rake staticman:build
+</code></pre>
+
+<p>And delete.</p>
+
+<pre><code>$ rake staticman:destroy
+</code></pre>
+
+<h2>Contributing</h2>
+
+<ol>
+<li>Fork it</li>
+<li>Create your feature branch (<code>git checkout -b my-new-feature</code>)</li>
+<li>Commit your changes (<code>git commit -am 'Add some feature'</code>)</li>
+<li>Push to the branch (<code>git push origin my-new-feature</code>)</li>
+<li>Create new Pull Request</li>
+</ol><h2>Copyright</h2>
+
+<p>Copyright (c) 2012 terut. See MIT LICENSE for details.</p>
+      </section>
+
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    
+  </body>
+</html>
