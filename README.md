@@ -21,7 +21,7 @@ Or install it yourself as:
 
 Create `staticman.rb` as config in `config` directory.
 
-    $ rails g staticman:build
+    $ rails g staticman:config
 
 Next, setting config with `staticman.rb`.
 
